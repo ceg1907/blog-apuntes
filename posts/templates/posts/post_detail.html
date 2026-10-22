@@ -1,23 +1,31 @@
-<!DOCTYPE html>
-<html lang="es">
+{% extends 'base.html' %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
+{% block titulo %}{{ post.titulo }}{% endblock %}
 
-<body>
-    <a href="{% url 'post_list' %}">← Volver</a>
+{% block contenido %}
+<a href="{% url 'post_list' %}" class="back-link"><i class="bi bi-arrow-left"></i> Volver a todos los apuntes</a>
+
+<article class="detail-card">
+    <div class="detail-top">
+        <span class="category-badge cat-{{ post.categoria }}">{{ post.get_categoria_display }}</span>
+    </div>
 
     <h1>{{ post.titulo }}</h1>
-    <p>{{ post.get_categoria_display }} · {{ post.autor }} · {{ post.fecha_creacion|date:"d/m/Y" }}</p>
+
+    <div class="detail-author">
+        <span class="large-avatar">{{ post.autor.username|first|upper }}</span>
+        <div>
+            <strong>{{ post.autor.username }}</strong>
+            <span>Publicado el {{ post.fecha_creacion|date:"j \d\e F \d\e Y" }}</span>
+        </div>
+    </div>
 
     {% if post.imagen %}
-    <img src="{{ post.imagen.url }}" width="500">
+    <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" class="detail-image">
     {% endif %}
 
-    <p>{{ post.contenido|linebreaks }}</p>
-</body>
-
-</html>
+    <div class="article-copy">
+        {{ post.contenido|linebreaks }}
+    </div>
+</article>
+{% endblock %}
