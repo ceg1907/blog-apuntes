@@ -26,20 +26,38 @@
   <form method="post" enctype="multipart/form-data" class="form-card">
     {% csrf_token %}
 
-    {% for field in form %}
+    <div class="form-field">
+      <label for="{{ form.titulo.id_for_label }}">{{ form.titulo.label }}<span class="required">*</span></label>
+      {{ form.titulo }}
+      {% for error in form.titulo.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+    </div>
+
+    <div class="form-row">
       <div class="form-field">
-        {{ field.label_tag }}
-        {{ field }}
-        {% for error in field.errors %}
-          <span class="field-error">{{ error }}</span>
-        {% endfor %}
+        <label for="{{ form.categoria.id_for_label }}">{{ form.categoria.label }}<span class="required">*</span></label>
+        {{ form.categoria }}
+        {% for error in form.categoria.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
       </div>
-    {% endfor %}
+
+      <div class="form-field upload-field">
+        <label for="{{ form.imagen.id_for_label }}">{{ form.imagen.label }}<span class="optional">(opcional)</span></label>
+        {{ form.imagen }}
+        <span class="field-hint">PNG o JPG</span>
+        {% for error in form.imagen.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="{{ form.contenido.id_for_label }}">{{ form.contenido.label }}<span class="required">*</span></label>
+      {{ form.contenido }}
+      <span class="field-hint">Tip: dejá una línea en blanco para separar los párrafos.</span>
+      {% for error in form.contenido.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
+    </div>
 
     <div class="form-actions">
       <a href="{% url 'post_list' %}" class="secondary-button">Cancelar</a>
       <button type="submit" class="primary-button">
-        <i class="bi bi-check-lg"></i>
+        <i class="bi bi-file-earmark-text"></i>
         {% if object %}Guardar cambios{% else %}Publicar apunte{% endif %}
       </button>
     </div>

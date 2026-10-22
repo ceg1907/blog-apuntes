@@ -4,8 +4,8 @@
 
 :root {
     --ink: #17232b;
-    --muted: #71808a;
-    --line: #e4eaeb;
+    --muted: #56666d;
+    --line: #dde5e6;
     --paper: #fbfcfa;
     --green-deep: #2c886b;
 }
@@ -87,7 +87,7 @@ button {
 
 .brand-subtitle {
     font: 10px 'DM Mono', monospace;
-    color: #9aa5a7;
+    color: #738187;
     margin-top: 5px;
 }
 
@@ -102,7 +102,7 @@ button {
 .user-chip {
     border: 0;
     background: transparent;
-    color: #738087;
+    color: #56666d;
     font-size: 12px;
     padding: 9px 12px;
     border-radius: 7px;
@@ -185,7 +185,7 @@ button {
 .side-heading {
     font: 500 10px 'DM Mono', monospace;
     letter-spacing: 1.4px;
-    color: #9aa5a7;
+    color: #738187;
     margin: 0 0 15px;
 }
 
@@ -199,8 +199,8 @@ button {
     display: flex;
     align-items: center;
     gap: 10px;
-    color: #6d7c83;
-    font-size: 12px;
+    color: #56666d;
+    font-size: 13px;
 }
 
 .side-link.active,
@@ -231,9 +231,9 @@ button {
 }
 
 .sidebar-note p {
-    font-size: 10px;
+    font-size: 11px;
     line-height: 1.6;
-    color: #8a9699;
+    color: #738187;
     margin: 5px 0 0;
 }
 
@@ -294,7 +294,7 @@ button {
 
 .eyebrow {
     font: 500 10px 'DM Mono', monospace;
-    color: #9ca7aa;
+    color: #738187;
     letter-spacing: .9px;
     margin-bottom: 13px;
 }
@@ -308,8 +308,8 @@ button {
 }
 
 .page-header p {
-    color: #849095;
-    font-size: 13px;
+    color: #56666d;
+    font-size: 14px;
     margin: 0;
     line-height: 1.7;
     max-width: 535px;
@@ -326,7 +326,7 @@ button {
 }
 
 .results-label {
-    color: #9da8aa;
+    color: #738187;
     font: 11px 'DM Mono', monospace;
 }
 
@@ -380,7 +380,7 @@ button {
     border: 1px solid var(--line);
     background: #fff;
     border-radius: 6px;
-    color: #718087;
+    color: #56666d;
     display: grid;
     place-items: center;
 }
@@ -432,8 +432,8 @@ button {
 }
 
 .visual-placeholder {
-    background: #f3f6f4;
-    color: #b6c1c0;
+    background: #eef3f1;
+    color: #8e9ba0;
     font: 10px 'DM Mono', monospace;
 }
 
@@ -457,8 +457,8 @@ button {
 }
 
 .post-body p {
-    color: #839095;
-    font-size: 11px;
+    color: #56666d;
+    font-size: 12.5px;
     line-height: 1.7;
     margin: 0 0 19px;
 }
@@ -469,8 +469,8 @@ button {
     display: flex;
     align-items: center;
     gap: 7px;
-    color: #849095;
-    font-size: 10px;
+    color: #56666d;
+    font-size: 11px;
 }
 
 .post-footer .author-avatar {
@@ -516,7 +516,7 @@ button {
 }
 
 .empty-state p {
-    color: #849095;
+    color: #56666d;
     font-size: 12px;
     margin: 0 0 20px;
 }
@@ -524,7 +524,7 @@ button {
 /* ---------- Detalle de un post ---------- */
 
 .back-link {
-    color: #7f8c91;
+    color: #56666d;
     font: 11px 'DM Mono', monospace;
     display: inline-flex;
     align-items: center;
@@ -588,7 +588,7 @@ button {
 }
 
 .detail-author div span {
-    color: #9aa5a7;
+    color: #738187;
     font: 10px 'DM Mono', monospace;
     margin-top: 4px;
 }
@@ -606,7 +606,7 @@ button {
     max-width: 650px;
     font-size: 14px;
     line-height: 1.9;
-    color: #4f5f66;
+    color: #34444b;
 }
 
 .article-copy p {
@@ -629,9 +629,9 @@ button {
 
 .form-field label {
     display: block;
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 700;
-    color: #506168;
+    color: #2f4047;
     margin-bottom: 9px;
 }
 
@@ -643,7 +643,7 @@ button {
 .form-field textarea {
     display: block;
     width: 100%;
-    border: 1px solid #dce5e5;
+    border: 1px solid #cbd7d7;
     border-radius: 6px;
     padding: 11px 12px;
     outline: 0;
@@ -667,8 +667,9 @@ button {
 
 .form-field {
     font-size: 12px;
-    color: #6d7c83;
+    color: #56666d;
     line-height: 1.9;
+    min-width: 0;
 }
 
 .form-field input[type=file] {
@@ -690,7 +691,7 @@ button {
 
 .field-hint {
     display: block;
-    color: #a5afb1;
+    color: #738187;
     font-size: 11px;
     line-height: 1.6;
     margin-top: 7px;
@@ -725,6 +726,59 @@ button {
     gap: 9px;
 }
 
+.form-field input::placeholder,
+.form-field textarea::placeholder {
+    color: #8e9ba0;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.required {
+    color: #e06b5b;
+    margin-left: 3px;
+}
+
+.optional {
+    color: #738187;
+    font-weight: 400;
+    font-size: 11px;
+    margin-left: 6px;
+}
+
+/* Campo de imagen con estilo de "caja para subir" */
+.upload-field input[type=file] {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+    border: 1px dashed #a9cdbd;
+    border-radius: 6px;
+    background: #f6fbf8;
+    padding: 7px 8px;
+    color: #56666d;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.upload-field input[type=file]:hover {
+    border-color: #6fb093;
+    background: #eff8f3;
+}
+
+.upload-field input[type=file]::file-selector-button {
+    border: 0;
+    border-radius: 5px;
+    background: #d9f0e5;
+    color: #2c886b;
+    font: 700 12px 'Manrope', sans-serif;
+    padding: 7px 12px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
 /* Login y registro */
 .auth-card {
     max-width: 440px;
@@ -743,7 +797,7 @@ button {
 .auth-switch {
     text-align: center;
     font-size: 12px;
-    color: #849095;
+    color: #56666d;
     margin-top: 18px;
 }
 
@@ -787,7 +841,7 @@ button {
 }
 
 .delete-wrap p {
-    color: #849095;
+    color: #56666d;
     font-size: 12px;
     line-height: 1.8;
     margin: 0 auto 27px;
@@ -830,12 +884,12 @@ button {
 
 .profile-card p {
     font-size: 11px;
-    color: #849095;
+    color: #56666d;
     margin: 0 0 7px;
 }
 
 .joined {
-    color: #9aa5a7;
+    color: #738187;
     font: 9px 'DM Mono', monospace;
     display: flex;
     align-items: center;
@@ -859,7 +913,7 @@ button {
 }
 
 .profile-stat span {
-    color: #9aa5a7;
+    color: #738187;
     font: 10px 'DM Mono', monospace;
     margin-top: 4px;
 }
@@ -907,7 +961,7 @@ button {
 }
 
 .mini-date {
-    color: #9da8aa;
+    color: #738187;
     font: 10px 'DM Mono', monospace;
 }
 
@@ -921,7 +975,7 @@ button {
 .footer {
     border-top: 1px solid var(--line);
     padding: 20px clamp(16px, 5vw, 72px);
-    color: #a2acad;
+    color: #738187;
     display: flex;
     justify-content: space-between;
     gap: 8px;
@@ -986,6 +1040,11 @@ button {
     .delete-wrap {
         margin: 35px 0;
         padding: 35px 22px;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 0;
     }
 
     .footer {

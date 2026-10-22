@@ -6,7 +6,7 @@
 
 {% for field in form %}
   <div class="form-field">
-    {{ field.label_tag }}
+    <label for="{{ field.id_for_label }}">{{ field.label }}{% if field.field.required %}<span class="required">*</span>{% endif %}</label>
     {{ field }}
     {% if field.help_text %}
       <div class="field-hint">{{ field.help_text|safe }}</div>
