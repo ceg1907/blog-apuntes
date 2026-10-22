@@ -3,58 +3,58 @@
 {% block titulo %}Inicio{% endblock %}
 
 {% block contenido %}
-<div class="page-header">
+  <div class="page-header">
     <div>
-        <div class="eyebrow">/ inicio</div>
-        <h1>Apuntes para seguir avanzando</h1>
-        <p>Ideas claras, ejemplos reales y aprendizajes compartidos por la comunidad.</p>
+      <div class="eyebrow">/ inicio</div>
+      <h1>Apuntes para seguir avanzando</h1>
+      <p>Ideas claras, ejemplos reales y aprendizajes compartidos por la comunidad.</p>
     </div>
     {% if user.is_authenticated %}
-    <a href="#" class="primary-button"><i class="bi bi-plus-lg"></i> Compartir un apunte</a>
+      <a href="{% url 'post_create' %}" class="primary-button"><i class="bi bi-plus-lg"></i> Compartir un apunte</a>
     {% endif %}
-</div>
+  </div>
 
-<div class="section-label">
+  <div class="section-label">
     <span>Últimos apuntes</span>
     <span class="results-label">{{ posts|length }} apunte{{ posts|length|pluralize }}</span>
-</div>
+  </div>
 
-{% if posts %}
-<div class="post-grid">
-    {% for post in posts %}
-    <a href="{% url 'post_detail' post.pk %}" class="post-card">
-        {% if post.imagen %}
-        <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" class="post-image">
-        {% else %}
-        <div class="post-visual visual-placeholder">
-            <i class="bi bi-code-slash"></i>
-            <span>sin imagen</span>
-        </div>
-        {% endif %}
+  {% if posts %}
+    <div class="post-grid">
+      {% for post in posts %}
+        <a href="{% url 'post_detail' post.pk %}" class="post-card">
+          {% if post.imagen %}
+            <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" class="post-image">
+          {% else %}
+            <div class="post-visual visual-placeholder">
+              <i class="bi bi-code-slash"></i>
+              <span>sin imagen</span>
+            </div>
+          {% endif %}
 
-        <div class="post-body">
+          <div class="post-body">
             <div class="post-meta">
-                <span class="category-badge cat-{{ post.categoria }}">{{ post.get_categoria_display }}</span>
+              <span class="category-badge cat-{{ post.categoria }}">{{ post.get_categoria_display }}</span>
             </div>
             <h3>{{ post.titulo }}</h3>
             <p>{{ post.contenido|truncatechars:140 }}</p>
             <div class="post-footer">
-                <span class="author-avatar">{{ post.autor.username|first|upper }}</span>
-                <span>{{ post.autor.username }}</span>
-                <span class="meta-separator">·</span>
-                <span>{{ post.fecha_creacion|date:"j M Y" }}</span>
-                <i class="bi bi-arrow-right card-arrow"></i>
+              <span class="author-avatar">{{ post.autor.username|first|upper }}</span>
+              <span>{{ post.autor.username }}</span>
+              <span class="meta-separator">·</span>
+              <span>{{ post.fecha_creacion|date:"j M Y" }}</span>
+              <i class="bi bi-arrow-right card-arrow"></i>
             </div>
-        </div>
-    </a>
-    {% endfor %}
-</div>
-{% else %}
-<div class="empty-state">
-    <div class="empty-icon"><i class="bi bi-journal-x"></i></div>
-    <h2>Todavía no hay apuntes</h2>
-    <p>Cuando alguien comparta un apunte, lo vas a ver acá.</p>
-    <a href="{% url 'post_list' %}" class="secondary-button">Ver todos los apuntes</a>
-</div>
-{% endif %}
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon"><i class="bi bi-journal-x"></i></div>
+      <h2>Todavía no hay apuntes</h2>
+      <p>Cuando alguien comparta un apunte, lo vas a ver acá.</p>
+      <a href="{% url 'post_list' %}" class="secondary-button">Ver todos los apuntes</a>
+    </div>
+  {% endif %}
 {% endblock %}

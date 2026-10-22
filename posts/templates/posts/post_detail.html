@@ -3,29 +3,35 @@
 {% block titulo %}{{ post.titulo }}{% endblock %}
 
 {% block contenido %}
-<a href="{% url 'post_list' %}" class="back-link"><i class="bi bi-arrow-left"></i> Volver a todos los apuntes</a>
+  <a href="{% url 'post_list' %}" class="back-link"><i class="bi bi-arrow-left"></i> Volver a todos los apuntes</a>
 
-<article class="detail-card">
+  <article class="detail-card">
     <div class="detail-top">
-        <span class="category-badge cat-{{ post.categoria }}">{{ post.get_categoria_display }}</span>
+      <span class="category-badge cat-{{ post.categoria }}">{{ post.get_categoria_display }}</span>
+      {% if user == post.autor %}
+        <div class="detail-actions">
+          <a href="{% url 'post_update' post.pk %}" class="icon-button" title="Editar"><i class="bi bi-pencil"></i></a>
+          <a href="{% url 'post_delete' post.pk %}" class="icon-button danger" title="Eliminar"><i class="bi bi-trash3"></i></a>
+        </div>
+      {% endif %}
     </div>
 
     <h1>{{ post.titulo }}</h1>
 
     <div class="detail-author">
-        <span class="large-avatar">{{ post.autor.username|first|upper }}</span>
-        <div>
-            <strong>{{ post.autor.username }}</strong>
-            <span>Publicado el {{ post.fecha_creacion|date:"j \d\e F \d\e Y" }}</span>
-        </div>
+      <span class="large-avatar">{{ post.autor.username|first|upper }}</span>
+      <div>
+        <strong>{{ post.autor.username }}</strong>
+        <span>Publicado el {{ post.fecha_creacion|date:"j \d\e F \d\e Y" }}</span>
+      </div>
     </div>
 
     {% if post.imagen %}
-    <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" class="detail-image">
+      <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" class="detail-image">
     {% endif %}
 
     <div class="article-copy">
-        {{ post.contenido|linebreaks }}
+      {{ post.contenido|linebreaks }}
     </div>
-</article>
+  </article>
 {% endblock %}

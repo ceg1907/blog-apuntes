@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block titulo %}{% if object %}Editar apunte{% else %}Nuevo apunte{% endif %}{% endblock %}
+
+{% block contenido %}
+  {% if object %}
+    <a href="{% url 'post_detail' object.pk %}" class="back-link"><i class="bi bi-arrow-left"></i> Volver al apunte</a>
+  {% else %}
+    <a href="{% url 'post_list' %}" class="back-link"><i class="bi bi-arrow-left"></i> Volver a todos los apuntes</a>
+  {% endif %}
+
+  <div class="page-header">
+    <div>
+      {% if object %}
+        <div class="eyebrow">/ editar apunte</div>
+        <h1>Editá tu apunte</h1>
+        <p>Corregí, ampliá o mejorá lo que compartiste.</p>
+      {% else %}
+        <div class="eyebrow">/ nuevo apunte</div>
+        <h1>Compartí lo que aprendiste</h1>
+        <p>Tu explicación puede ser justo lo que otra persona necesitaba leer.</p>
+      {% endif %}
+    </div>
+  </div>
+
+  <form method="post" enctype="multipart/form-data" class="form-card">
+    {% csrf_token %}
+
+    {% for field in form %}
+      <div class="form-field">
+        {{ field.label_tag }}
+        {{ field }}
+        {% for error in field.errors %}
+          <span class="field-error">{{ error }}</span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+
+    <div class="form-actions">
+      <a href="{% url 'post_list' %}" class="secondary-button">Cancelar</a>
+      <button type="submit" class="primary-button">
+        <i class="bi bi-check-lg"></i>
+        {% if object %}Guardar cambios{% else %}Publicar apunte{% endif %}
+      </button>
+    </div>
+  </form>
+{% endblock %}

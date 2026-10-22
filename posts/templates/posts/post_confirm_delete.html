@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Eliminar apunte{% endblock %}
+
+{% block contenido %}
+  <div class="delete-wrap">
+    <div class="delete-icon"><i class="bi bi-trash3"></i></div>
+    <div class="eyebrow">/ eliminar apunte</div>
+    <h1>¿Seguro que querés eliminar este apunte?</h1>
+    <p>
+      Esta acción no se puede deshacer. Se va a eliminar
+      <strong>"{{ post.titulo }}"</strong>
+      de tus apuntes publicados.
+    </p>
+
+    <form method="post" class="delete-actions">
+      {% csrf_token %}
+      <a href="{% url 'post_detail' post.pk %}" class="secondary-button">Cancelar</a>
+      <button type="submit" class="delete-button"><i class="bi bi-trash3"></i> Eliminar apunte</button>
+    </form>
+  </div>
+{% endblock %}
