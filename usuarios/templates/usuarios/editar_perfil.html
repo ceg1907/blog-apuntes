@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Editar perfil{% endblock %}
+
+{% block contenido %}
+  <a href="{% url 'perfil' %}" class="back-link"><i class="bi bi-arrow-left"></i> Volver a mi perfil</a>
+
+  <div class="page-header">
+    <div>
+      <div class="eyebrow">/ editar perfil</div>
+      <h1>Editá tus datos</h1>
+      <p>Actualizá tu nombre y tu email.</p>
+    </div>
+  </div>
+
+  <form method="post" class="form-card">
+    {% csrf_token %}
+    {% include 'includes/campos_form.html' %}
+    <div class="form-actions">
+      <a href="{% url 'perfil' %}" class="secondary-button">Cancelar</a>
+      <button type="submit" class="primary-button"><i class="bi bi-check-lg"></i> Guardar cambios</button>
+    </div>
+  </form>
+{% endblock %}

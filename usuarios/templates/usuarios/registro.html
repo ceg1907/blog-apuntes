@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Registrarse{% endblock %}
+
+{% block contenido %}
+  <div class="auth-card">
+    <div class="page-header">
+      <div>
+        <div class="eyebrow">/ registro</div>
+        <h1>Creá tu cuenta</h1>
+        <p>Sumate para compartir lo que vas aprendiendo.</p>
+      </div>
+    </div>
+
+    <form method="post" class="form-card">
+      {% csrf_token %}
+      {% include 'includes/campos_form.html' %}
+      <div class="form-actions">
+        <button type="submit" class="primary-button"><i class="bi bi-person-plus"></i> Crear cuenta</button>
+      </div>
+    </form>
+
+    <p class="auth-switch">¿Ya tenés cuenta? <a href="{% url 'login' %}">Iniciá sesión</a></p>
+  </div>
+{% endblock %}

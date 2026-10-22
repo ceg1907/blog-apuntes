@@ -117,6 +117,10 @@ button {
     background: #f2f6f4;
 }
 
+.logout-form {
+    margin: 0;
+}
+
 .logout-link {
     color: #c65e53;
 }
@@ -634,6 +638,7 @@ button {
 .form-field input[type=text],
 .form-field input[type=email],
 .form-field input[type=password],
+.form-field input[type=url],
 .form-field select,
 .form-field textarea {
     display: block;
@@ -686,8 +691,14 @@ button {
 .field-hint {
     display: block;
     color: #a5afb1;
-    font: 10px 'DM Mono', monospace;
+    font-size: 11px;
+    line-height: 1.6;
     margin-top: 7px;
+}
+
+.field-hint ul {
+    margin: 4px 0 0;
+    padding-left: 18px;
 }
 
 .field-error {

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Iniciar sesión{% endblock %}
+
+{% block contenido %}
+  <div class="auth-card">
+    <div class="page-header">
+      <div>
+        <div class="eyebrow">/ iniciar sesión</div>
+        <h1>¡Hola de nuevo!</h1>
+        <p>Entrá para compartir y editar tus apuntes.</p>
+      </div>
+    </div>
+
+    <form method="post" class="form-card">
+      {% csrf_token %}
+      {% include 'includes/campos_form.html' %}
+      <input type="hidden" name="next" value="{{ next }}">
+      <div class="form-actions">
+        <button type="submit" class="primary-button"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</button>
+      </div>
+    </form>
+
+    <p class="auth-switch">¿Todavía no tenés cuenta? <a href="{% url 'registro' %}">Registrate</a></p>
+  </div>
+{% endblock %}

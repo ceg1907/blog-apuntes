@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block titulo %}Mi perfil{% endblock %}
+
+{% block contenido %}
+  <div class="page-header">
+    <div>
+      <div class="eyebrow">/ mi perfil</div>
+      <h1>Hola, {{ user.first_name|default:user.username }}</h1>
+      <p>Este es tu rincón para ver y gestionar lo que compartiste.</p>
+    </div>
+    <a href="{% url 'editar_perfil' %}" class="secondary-button"><i class="bi bi-gear"></i> Editar perfil</a>
+  </div>
+
+  <div class="profile-card">
+    <div class="profile-avatar">{{ user.username|first|upper }}</div>
+    <div>
+      <h2>{{ user.get_full_name|default:user.username }}</h2>
+      <p>{{ user.email|default:"Sin email cargado" }}</p>
+      <span class="joined"><i class="bi bi-calendar3"></i> Miembro desde {{ user.date_joined|date:"F \d\e Y" }}</span>
+    </div>
+    <div class="profile-stat">
+      <strong>{{ mis_posts|length }}</strong>
+      <span>apunte{{ mis_posts|length|pluralize }} publicado{{ mis_posts|length|pluralize }}</span>
+    </div>
+  </div>
+
+  <div class="section-label">
+    <span>Mis apuntes</span>
+  </div>
+
+  {% if mis_posts %}
+    <div class="profile-posts">
+      {% for post in mis_posts %}
+        <a href="{% url 'post_detail' post.pk %}" class="mini-post">
+          <div class="mini-thumb">
+            {% if post.imagen %}
+              <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}">
+            {% else %}
+              <i class="bi bi-code-slash"></i>
+            {% endif %}
+          </div>
+          <div>
+            <span class="category-badge cat-{{ post.categoria }}">{{ post.get_categoria_display }}</span>
+            <h3>{{ post.titulo }}</h3>
+            <span class="mini-date">{{ post.fecha_creacion|date:"j M Y" }}</span>
+          </div>
+          <i class="bi bi-arrow-right mini-arrow"></i>
+        </a>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="empty-state">
+      <div class="empty-icon"><i class="bi bi-journal-plus"></i></div>
+      <h2>Todavía no publicaste apuntes</h2>
+      <p>¡Compartí lo primero que aprendiste!</p>
+      <a href="{% url 'post_create' %}" class="primary-button"><i class="bi bi-plus-lg"></i> Nuevo apunte</a>
+    </div>
+  {% endif %}
+{% endblock %}

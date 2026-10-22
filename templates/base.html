@@ -20,21 +20,24 @@
           <div class="brand-subtitle">aprendemos compartiendo</div>
         </div>
       </a>
-
+      
       <nav class="main-nav">
         <a href="{% url 'post_list' %}" class="nav-link"><i class="bi bi-grid"></i> Inicio</a>
         {% if user.is_authenticated %}
           <a href="{% url 'post_create' %}" class="nav-link"><i class="bi bi-plus-lg"></i> Nuevo apunte</a>
-          <a href="#" class="nav-link"><i class="bi bi-person"></i> Mi perfil</a>
+          <a href="{% url 'perfil' %}" class="nav-link"><i class="bi bi-person"></i> Mi perfil</a>
           <div class="nav-divider"></div>
           <span class="user-chip">
             <span class="avatar">{{ user.username|first|upper }}</span>
             {{ user.username }}
           </span>
-          <a href="#" class="nav-link logout-link"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</a>
+          <form method="post" action="{% url 'logout' %}" class="logout-form">
+            {% csrf_token %}
+            <button type="submit" class="nav-link logout-link"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</button>
+          </form>
         {% else %}
-          <a href="#" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a>
-          <a href="#" class="primary-button">Registrarse</a>
+          <a href="{% url 'login' %}" class="nav-link"><i class="bi bi-box-arrow-in-right"></i> Iniciar sesión</a>
+          <a href="{% url 'registro' %}" class="primary-button">Registrarse</a>
         {% endif %}
       </nav>
     </header>
