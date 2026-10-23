@@ -34,5 +34,21 @@
     <div class="article-copy">
       {{ post.contenido|markdown }}
     </div>
+
+    <div class="like-bar">
+      {% if user.is_authenticated %}
+        <form method="post" action="{% url 'post_like' post.pk %}">
+          {% csrf_token %}
+          <button type="submit" class="like-button {% if ya_dio_like %}liked{% endif %}">
+            <i class="bi {% if ya_dio_like %}bi-heart-fill{% else %}bi-heart{% endif %}"></i>
+            {{ post.likes.count }}
+          </button>
+        </form>
+        <span class="like-text">{% if ya_dio_like %}Te gusta este apunte{% else %}¿Te sirvió este apunte?{% endif %}</span>
+      {% else %}
+        <span class="like-button disabled"><i class="bi bi-heart"></i> {{ post.likes.count }}</span>
+        <span class="like-text"><a href="{% url 'login' %}?next={{ request.path }}">Iniciá sesión</a> para dar me gusta</span>
+      {% endif %}
+    </div>
   </article>
 {% endblock %}

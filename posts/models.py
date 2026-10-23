@@ -16,11 +16,10 @@ class Post(models.Model):
     categoria = models.CharField(max_length=20, choices=CATEGORIAS)
     autor = models.ForeignKey(User, on_delete=models.CASCADE)
     fecha_creacion = models.DateTimeField(auto_now_add=True)
+    likes = models.ManyToManyField(User, related_name='posts_con_like', blank=True)
 
     class Meta:
         ordering = ['-fecha_creacion']
 
     def __str__(self):
         return self.titulo
-
-# Create your models here.

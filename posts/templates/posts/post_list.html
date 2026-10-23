@@ -44,7 +44,7 @@
               <span>{{ post.autor.username }}</span>
               <span class="meta-separator">·</span>
               <span>{{ post.fecha_creacion|date:"j M Y" }}</span>
-              <i class="bi bi-arrow-right card-arrow"></i>
+              <span class="card-likes"><i class="bi bi-heart"></i> {{ post.likes.count }}</span>
             </div>
           </div>
         </a>
