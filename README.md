@@ -2,8 +2,6 @@
 
 Blog web de apuntes de programación hecho con Django. Es un espacio donde estudiantes comparten lo que van aprendiendo: explicaciones, ejemplos de código y resúmenes de temas de Python, JavaScript, HTML/CSS y Git.
 
-Proyecto final del curso de Python.
-
 ---
 
 ## Tecnologías utilizadas
@@ -20,6 +18,7 @@ Proyecto final del curso de Python.
 ## Funcionalidades principales
 
 **Apuntes (posts)**
+
 - Listado de apuntes en la página de inicio, del más nuevo al más viejo.
 - Detalle de cada apunte.
 - Crear, editar y eliminar apuntes desde la interfaz web.
@@ -27,12 +26,14 @@ Proyecto final del curso de Python.
 - Categorías (Python, JavaScript, HTML/CSS y Git) con filtro desde la barra lateral.
 
 **Usuarios**
+
 - Registro de usuarios nuevos.
 - Inicio y cierre de sesión.
 - Perfil con los datos del usuario y la lista de sus apuntes.
 - Edición del perfil (nombre, apellido y email).
 
 **Permisos**
+
 - Cualquier visitante, aunque no haya iniciado sesión, puede ver el listado y el detalle de los apuntes.
 - Crear apuntes, ver el perfil y editarlo requiere haber iniciado sesión. Si un visitante intenta entrar, se lo redirige al login.
 - Solo el autor de un apunte puede editarlo o eliminarlo.
@@ -136,20 +137,20 @@ La carpeta `media/` se crea sola la primera vez que se sube una imagen.
 
 ## Rutas principales
 
-| Ruta | Página | ¿Requiere sesión? |
-|---|---|---|
-| `/` | Listado de apuntes | No |
-| `/?categoria=python` | Listado filtrado por categoría | No |
-| `/post/<id>/` | Detalle de un apunte | No |
-| `/post/nuevo/` | Crear apunte | Sí |
-| `/post/<id>/editar/` | Editar apunte | Sí (solo el autor) |
-| `/post/<id>/eliminar/` | Eliminar apunte | Sí (solo el autor) |
-| `/registro/` | Registro | No |
-| `/login/` | Iniciar sesión | No |
-| `/logout/` | Cerrar sesión | Sí |
-| `/perfil/` | Mi perfil | Sí |
-| `/perfil/editar/` | Editar perfil | Sí |
-| `/admin/` | Panel de administración | Superusuario |
+| Ruta                   | Página                         | ¿Requiere sesión?  |
+| ---------------------- | ------------------------------ | ------------------ |
+| `/`                    | Listado de apuntes             | No                 |
+| `/?categoria=python`   | Listado filtrado por categoría | No                 |
+| `/post/<id>/`          | Detalle de un apunte           | No                 |
+| `/post/nuevo/`         | Crear apunte                   | Sí                 |
+| `/post/<id>/editar/`   | Editar apunte                  | Sí (solo el autor) |
+| `/post/<id>/eliminar/` | Eliminar apunte                | Sí (solo el autor) |
+| `/registro/`           | Registro                       | No                 |
+| `/login/`              | Iniciar sesión                 | No                 |
+| `/logout/`             | Cerrar sesión                  | Sí                 |
+| `/perfil/`             | Mi perfil                      | Sí                 |
+| `/perfil/editar/`      | Editar perfil                  | Sí                 |
+| `/admin/`              | Panel de administración        | Superusuario       |
 
 ---
 
@@ -172,5 +173,4 @@ blog-apuntes/
 
 ## Autora
 
-**Cristina Gonzalez**
-GitHub: [@ceg1907](https://github.com/ceg1907)
+**Cristina Gonzalez** | [GitHub](https://github.com/ceg1907)
