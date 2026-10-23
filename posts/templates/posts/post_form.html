@@ -50,7 +50,7 @@
     <div class="form-field">
       <label for="{{ form.contenido.id_for_label }}">{{ form.contenido.label }}<span class="required">*</span></label>
       {{ form.contenido }}
-      <span class="field-hint">Tip: dejá una línea en blanco para separar los párrafos.</span>
+      <span class="field-hint">Podés usar Markdown: **negrita**, `código` y bloques de código entre ```</span>
       {% for error in form.contenido.errors %}<span class="field-error">{{ error }}</span>{% endfor %}
     </div>
 

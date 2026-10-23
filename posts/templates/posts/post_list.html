@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load markdown_extras %}
 
 {% block titulo %}Inicio{% endblock %}
 
@@ -37,7 +38,7 @@
               <span class="category-badge cat-{{ post.categoria }}">{{ post.get_categoria_display }}</span>
             </div>
             <h3>{{ post.titulo }}</h3>
-            <p>{{ post.contenido|truncatechars:140 }}</p>
+            <p>{{ post.contenido|markdown|striptags|truncatechars:140 }}</p>
             <div class="post-footer">
               <span class="author-avatar">{{ post.autor.username|first|upper }}</span>
               <span>{{ post.autor.username }}</span>
