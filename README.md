@@ -11,6 +11,8 @@ Blog web de apuntes de programación hecho con Django. Es un espacio donde estud
 - **SQLite**: base de datos (viene incluida con Django)
 - **Pillow**: manejo de imágenes
 - **python-decouple**: lectura de variables de entorno desde el archivo `.env`
+- **Markdown**: formato del contenido de los apuntes
+- **nh3**: limpieza del HTML generado, para evitar código malicioso en los apuntes
 - **HTML y CSS propio**, con Bootstrap Icons y Google Fonts
 
 ---
@@ -24,6 +26,8 @@ Blog web de apuntes de programación hecho con Django. Es un espacio donde estud
 - Crear, editar y eliminar apuntes desde la interfaz web.
 - Imagen de portada opcional: si el apunte no tiene imagen, se muestra un recuadro de reemplazo.
 - Categorías (Python, JavaScript, HTML/CSS y Git) con filtro desde la barra lateral.
+- Contenido con formato **Markdown**: títulos, negritas, listas y bloques de código.
+- **Me gusta**: los usuarios registrados pueden dar y quitar like a cada apunte (uno por usuario). La cantidad se ve en el listado y en el detalle.
 
 **Usuarios**
 
@@ -123,11 +127,12 @@ Abrir en el navegador: **http://127.0.0.1:8000/**
 El repositorio **no incluye** la base de datos (`db.sqlite3`) ni las imágenes subidas (`media/`), para que cada persona empiece con el proyecto limpio. Después de seguir los pasos de instalación, el blog arranca vacío. Para probarlo:
 
 1. Entrar a **Registrarse** y crear un usuario. Al registrarse, se inicia sesión automáticamente.
-2. Hacer clic en **Nuevo apunte** y crear uno **con imagen** y otro **sin imagen**.
+2. Hacer clic en **Nuevo apunte** y crear uno **con imagen** y otro **sin imagen**. Se puede probar el formato Markdown, por ejemplo con `**negrita**` o un bloque de código entre tres comillas invertidas.
 3. Abrir un apunte y probar los botones de **editar** (lápiz) y **eliminar** (tacho).
-4. Filtrar por categoría desde la barra lateral.
-5. Entrar a **Mi perfil** y probar **Editar perfil**.
-6. Cerrar sesión y comprobar que:
+4. Dar **me gusta** a un apunte y volver a tocarlo para quitarlo.
+5. Filtrar por categoría desde la barra lateral.
+6. Entrar a **Mi perfil** y probar **Editar perfil**.
+7. Cerrar sesión y comprobar que:
    - El listado y el detalle se siguen viendo.
    - Al intentar entrar a `/post/nuevo/` o a `/perfil/`, se redirige al login.
 
@@ -145,6 +150,7 @@ La carpeta `media/` se crea sola la primera vez que se sube una imagen.
 | `/post/nuevo/`         | Crear apunte                   | Sí                 |
 | `/post/<id>/editar/`   | Editar apunte                  | Sí (solo el autor) |
 | `/post/<id>/eliminar/` | Eliminar apunte                | Sí (solo el autor) |
+| `/post/<id>/like/`     | Dar o quitar me gusta          | Sí                 |
 | `/registro/`           | Registro                       | No                 |
 | `/login/`              | Iniciar sesión                 | No                 |
 | `/logout/`             | Cerrar sesión                  | Sí                 |
